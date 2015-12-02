@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     resources :ingredients, except: [:index, :show]
   end
 
-  namespace :admin, constraints: AdminWhitelistConstraint.new do
-    resources :recipes, only: [:index, :destroy]
+  constraints AdminWhitelistConstraint.new do
+    namespace :admin do
+      resources :recipes, only: [:index, :destroy]
+    end
   end
 
   get '/:shortcode', to: 'permalinks#show', as: :permalink, constraints: { shortcode: /\h{6}/ }
