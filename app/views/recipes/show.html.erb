@@ -1,32 +1,46 @@
-<h1><%= @recipe.name %></h1>
+<div class="page-header">
+  <h1><%= @recipe.name %></h1>
+</div>
 
-<p><%= @recipe.description %></p>
+<p class="lead"><%= @recipe.description %></p>
 
-<dl>
-  <dt>Perparation Time:</dt>
-  <dd><%= @recipe.preparation_time %> minutes</dd>
-  <dt>Servings yielded:</dt>
-  <dd><%= @recipe.servings_yielded %></dd>
-</dl>
+<div class="row">
+  
+  <div class="col-md-4">
+    <h2>Info</h2>
+    <dl>
+      <dt>Perparation Time:</dt>
+      <dd><%= @recipe.preparation_time %> minutes</dd>
+      <dt>Servings yielded:</dt>
+      <dd><%= @recipe.servings_yielded %></dd>
+    </dl>
+  </div><!-- end of col -->
+  
+  <div class="col-md-8">
+    <h2>Ingredients</h2>
 
-<h2>Ingredients</h2>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li>
+          <strong><%= ingredient.amount %> <%= ingredient.unit %></strong> <%= ingredient.name %>
+          <small>
+            <%= link_to 'remove', recipe_ingredient_path(@recipe, ingredient), method: :delete %>
+            <%= link_to 'edit', edit_recipe_ingredient_path(@recipe, ingredient) %>
+          </small> 
+        </li>
+      <% end %>
+    </ul>
 
-<ul>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <li>
-      <strong><%= ingredient.amount %> <%= ingredient.unit %></strong> <%= ingredient.name %>
-      <small>
-        <%= link_to 'remove', recipe_ingredient_path(@recipe, ingredient), method: :delete %>
-        <%= link_to 'edit', edit_recipe_ingredient_path(@recipe, ingredient) %>
-      </small> 
-    </li>
-  <% end %>
-</ul>
+    <p><%= link_to '+ Add Ingredient', new_recipe_ingredient_path(@recipe), :class => 'btn btn-default btn-xs' %></p>
+  </div><!-- end of col -->
 
-<%= link_to '+ Add Ingredient', new_recipe_ingredient_path(@recipe) %>
+</div><!-- end of row -->
 
-<p><%= link_to 'Delete Recipe', recipe_path(@recipe), method: :delete %></p>
+
 
 <hr>
 
-<p><%= link_to 'View All', recipes_path %></p>
+<p class="pull-right"><%= link_to 'Delete Recipe', recipe_path(@recipe), method: :delete, :class => 'btn btn-danger' %></p>
+
+
+<p><%= link_to 'View All Recipes', recipes_path, :class => 'btn btn-primary' %></p>
