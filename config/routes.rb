@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :ingredients, except: [:index, :show]
   end
 
-  namespace :admin, constraints: { remote_ip: '127.0.0.1' } do
+  namespace :admin, constraints: AdminWhitelistConstraint.new do
     resources :recipes, only: [:index, :destroy]
   end
 
