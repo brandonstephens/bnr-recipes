@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Whitelist <small>Admin</small></h1>
+</div>
+
+<p><%= link_to '+ Add Whitelist IP', new_admin_whitelist_path, :class => 'btn btn-primary' %></p>
+
+<div class="row">
+  
+  <div class="col-md-4">
+  
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <td>IP Addresses</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @whitelist.each do |ip| %>
+          <tr>
+            <td><%= ip.ip %> <%= link_to 'delete', admin_whitelist_path(ip), method: :delete, :class => 'btn btn-danger btn-xs pull-right' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div><!-- end of row -->

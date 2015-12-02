@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1>Add a Whitelist IP</h1>
+</div>
+
+<div class="row">
+  
+  <div class="col-md-4">
+
+    <%= form_for([:admin, @whitelist]) do |f| %>
+      
+      <fieldset class="form-group">
+        <%= f.label :ip %>
+        <%= f.text_field :ip, :class => 'form-control' %>
+      </fieldset>
+
+      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+
+    <% end %>
+
+  </div>
+
+</div>

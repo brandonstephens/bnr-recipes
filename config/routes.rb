@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   constraints AdminWhitelistConstraint.new do
     namespace :admin do
       resources :recipes, only: [:index, :destroy]
+      resources :whitelists, only: [:index, :create, :new, :destroy]
     end
   end
 

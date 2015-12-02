@@ -1,4 +1,5 @@
 class Admin::RecipesController < ApplicationController
+
   def index
     @recipes = Recipe.all
   end
@@ -10,4 +11,5 @@ class Admin::RecipesController < ApplicationController
     
     redirect_to admin_recipes_path
   end
+
 end
