@@ -11,10 +11,17 @@
     <dl>
       <dt>Perparation Time:</dt>
       <dd><%= @recipe.preparation_time %> minutes</dd>
+
       <dt>Servings yielded:</dt>
       <dd><%= @recipe.servings_yielded %></dd>
+      
+      <dt>Likes</dt>
+      <dd><%= @recipe.likes %> <%= link_to '+' , like_recipe_path(@recipe), method: :patch, :class => 'btn btn-default btn-xs' %></dd>
+      
+      <dt>Permalink</dt>
+      <dd><%= link_to @recipe.shortcode, permalink_path(@recipe.shortcode), :class => 'btn btn-default btn-xs' %></dd>
     </dl>
-    <p><%= @recipe.likes %> likes <%= link_to '+' , like_recipe_path(@recipe), method: :patch, :class => 'btn btn-default btn-xs' %></p>
+    <p></p>
   </div><!-- end of col -->
   
   <div class="col-md-8">
@@ -24,10 +31,10 @@
       <% @recipe.ingredients.each do |ingredient| %>
         <li>
           <strong><%= ingredient.amount %> <%= ingredient.unit %></strong> <%= ingredient.name %>
-          <small>
-            <%= link_to 'remove', recipe_ingredient_path(@recipe, ingredient), method: :delete %>
-            <%= link_to 'edit', edit_recipe_ingredient_path(@recipe, ingredient) %>
-          </small> 
+          
+          <%= link_to 'edit', edit_recipe_ingredient_path(@recipe, ingredient), :class => 'btn btn-default btn-xs'%>
+          <%= link_to 'remove', recipe_ingredient_path(@recipe, ingredient), method: :delete, :class => 'btn btn-danger btn-xs'%>
+
         </li>
       <% end %>
     </ul>
