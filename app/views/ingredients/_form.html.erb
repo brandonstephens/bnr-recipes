@@ -1,0 +1,20 @@
+<%= form_for([recipe, ingredient]) do |f| %>
+
+  <fieldset class="field-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </fieldset>
+
+  <fieldset class="field-group">
+    <%= f.label :amount %>
+    <%= f.number_field :amount %>
+  </fieldset>
+
+  <fieldset class="field-group">
+    <%= f.label :unit %>
+    <%= f.text_field :unit %>
+  </fieldset>
+
+  <%= f.submit %>
+
+<% end %>
