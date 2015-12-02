@@ -9,4 +9,16 @@
   <dd><%= @recipe.servings_yielded %></dd>
 </dl>
 
+<h2>Ingredients</h2>
+
+<ul>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li>
+      <strong><%= ingredient.amount %> <%= ingredient.unit %></strong> <%= ingredient.name %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to '+ Add Ingredient', new_recipe_ingredient_path(@recipe) %>
+
 <p><%= link_to 'View All', recipes_path %></p>
