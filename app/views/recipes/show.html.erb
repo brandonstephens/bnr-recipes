@@ -14,11 +14,15 @@
 <ul>
   <% @recipe.ingredients.each do |ingredient| %>
     <li>
-      <strong><%= ingredient.amount %> <%= ingredient.unit %></strong> <%= ingredient.name %>
+      <strong><%= ingredient.amount %> <%= ingredient.unit %></strong> <%= ingredient.name %> | <%= link_to 'remove', recipe_ingredient_path(@recipe, ingredient), method: :delete %>
     </li>
   <% end %>
 </ul>
 
 <%= link_to '+ Add Ingredient', new_recipe_ingredient_path(@recipe) %>
+
+<p><%= link_to 'Delete Recipe', recipe_path(@recipe), method: :delete %></p>
+
+<hr>
 
 <p><%= link_to 'View All', recipes_path %></p>
