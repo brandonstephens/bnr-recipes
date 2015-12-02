@@ -3,42 +3,44 @@
 </div>
 
 <div class="row">
-  <p class="pull-right"><%= link_to '+ New Recipe', new_recipe_path, {:class => 'btn btn-primary'} %></p>
+  <div class="col-md-12">
+    <p class="pull-right"><%= link_to '+ New Recipe', new_recipe_path, {:class => 'btn btn-primary'} %></p>
+  </div>
 </div>
 
 <div class="row">
-
-  <table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Preparation Time</th>
-        <th>Servings Yielded</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @recipes.each do |recipe| %>
+  <div class="col-md-12">
+    <table class="table table-striped table-bordered">
+      <thead>
         <tr>
-          <td><%= link_to recipe.name, recipe %></td>
-          <td><%= recipe.description %></td>
-          <td><%= recipe.preparation_time %></td>
-          <td><%= recipe.servings_yielded %></td>
-          <td>
-            <%= link_to 'show', recipe, :class => 'btn btn-default btn-xs'%>
-            <%= link_to 'edit', edit_recipe_path(recipe), :class => 'btn btn-default btn-xs'%>
-            <%= link_to 'delete', admin_recipe_path(recipe), method: :delete, :class => 'btn btn-danger btn-xs'%>
-          </td>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Preparation Time</th>
+          <th>Servings Yielded</th>
+          <th></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+      <tbody>
+        <% @recipes.each do |recipe| %>
+          <tr>
+            <td><%= link_to recipe.name, recipe %></td>
+            <td><%= recipe.description %></td>
+            <td><%= recipe.preparation_time %></td>
+            <td><%= recipe.servings_yielded %></td>
+            <td>
+              <%= link_to 'show', recipe, :class => 'btn btn-default btn-xs'%>
+              <%= link_to 'edit', edit_recipe_path(recipe), :class => 'btn btn-default btn-xs'%>
+              <%= link_to 'delete', admin_recipe_path(recipe), method: :delete, :class => 'btn btn-danger btn-xs'%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div><!-- end of row -->
 
 <div class="row">
-  
-  <p><%= link_to 'Manage Whitelist', admin_whitelists_path , :class => 'btn btn-default btn-xs'%></p>
-
+  <div class="col-md-12">
+    <p><%= link_to 'Manage Whitelist', admin_whitelists_path , :class => 'btn btn-default btn-xs'%></p>
+  </div>
 </div>
