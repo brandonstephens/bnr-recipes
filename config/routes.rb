@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'recipes/index'
+  end
+
   resources :recipes do
     patch :like, on: :member
     resources :ingredients, except: [:index, :show]
+  end
+
+  namespace :admin do
+    resources :recipes, only: [:index, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
