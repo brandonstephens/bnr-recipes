@@ -1,0 +1,35 @@
+<h1>Recipes</h1>
+
+<div class="row">
+  <p><%= link_to '+ New Recipe', new_recipe_path %></p>
+</div>
+
+<div class="row">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Preparation Time</th>
+        <th>Servings Yielded</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipes.each do |recipe| %>
+        <tr>
+          <td><%= recipe.name %></td>
+          <td><%= recipe.description %></td>
+          <td><%= recipe.preparation_time %></td>
+          <td><%= recipe.servings_yielded %></td>
+          <td>
+            <%= link_to 'show', recipe%>
+            <%= link_to 'edit', edit_recipe_path(recipe)%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div><!-- end of row -->
