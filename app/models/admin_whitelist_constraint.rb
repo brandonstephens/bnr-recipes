@@ -6,6 +6,6 @@ class AdminWhitelistConstraint
   private
 
   def whitelist
-    ['127.0.0.1', '50.205.32.182']
+    Whitelist.pluck(:ip)
   end
 end
