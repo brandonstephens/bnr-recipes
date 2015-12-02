@@ -14,6 +14,7 @@
       <dt>Servings yielded:</dt>
       <dd><%= @recipe.servings_yielded %></dd>
     </dl>
+    <p><%= @recipe.likes %> likes <%= link_to '+' , like_recipe_path(@recipe), method: :patch, :class => 'btn btn-default btn-xs' %></p>
   </div><!-- end of col -->
   
   <div class="col-md-8">

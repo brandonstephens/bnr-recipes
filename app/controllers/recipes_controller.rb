@@ -42,6 +42,15 @@ class RecipesController < ApplicationController
     redirect_to recipes_path
   end
 
+  def like
+    recipe = Recipe.find(params[:id])
+
+    recipe.likes += 1
+    recipe.save!
+    
+    redirect_to recipe_path(recipe)
+  end
+
   private
 
   def recipe_params
